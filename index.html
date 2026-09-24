@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CARACTER — 车格</title>
+<meta name="description" content="CARACTER 为你的车建档并分享它的性格。每辆车都有自己的性格。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top" aria-label="CARACTER 首页">
+      <img class="brand-logo" src="assets/caracter-logo.png" alt="CARACTER">
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#apps">应用</a>
+      <div class="nav-tools">
+        <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">小工具</button>
+        <div class="nav-menu">
+          <div class="nav-menu-panel" role="menu">
+            <a class="menu-item" role="menuitem" href="https://powersim.caracter.cn" target="_blank" rel="noopener">
+              <span class="menu-label">马力机模拟器</span>
+              <span class="status status-live"><span class="dot"></span>在线</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="#events">活动</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO + APPS (first screen) -->
+  <section class="hero" id="top">
+    <div class="container">
+      <img class="hero-logo" src="assets/caracter-logo.png" alt="CARACTER">
+
+      <h1 class="hero-title">
+        <span class="hero-title-cn">车格</span>
+        <span class="hero-title-sub">每辆车都有自己的性格</span>
+      </h1>
+      <p class="hero-title-en">Every car has its character.</p>
+
+      <div class="apps" id="apps">
+        <div class="app">
+          <img class="app-icon" src="assets/icons/ios.png" alt="" width="84" height="84">
+          <span class="app-name">iOS</span>
+          <span class="status status-soon"><span class="dot"></span>敬请期待</span>
+        </div>
+        <div class="app">
+          <img class="app-icon" src="assets/icons/android.png" alt="" width="84" height="84">
+          <span class="app-name">Android</span>
+          <span class="status status-soon"><span class="dot"></span>敬请期待</span>
+        </div>
+        <div class="app">
+          <img class="app-icon" src="assets/icons/wechat.png" alt="" width="84" height="84">
+          <span class="app-name">微信小程序</span>
+          <span class="status status-soon"><span class="dot"></span>敬请期待</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECORD -->
+  <section class="section" id="record">
+    <div class="container grid-12">
+      <div class="col-side">
+        <span class="label">记录</span>
+      </div>
+      <div class="col-main">
+        <h2 class="display-2">为你的车，记下它的性格。</h2>
+        <p class="body-lg">车型、年份、里程、引擎、改装与保养，全都保存在一张车格里。随时更新，不会丢失。</p>
+        <p class="body">每一次改装、每一次保养都是一条记录。时间久了，这张车格就是这辆车全部的经历。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ID CARD (inverted) -->
+  <section class="idcard">
+    <div class="container">
+      <div class="doc-head">
+        <span class="doc-label">车格</span>
+        <span class="doc-no">CARACTER ID</span>
+      </div>
+
+      <dl class="card-spec">
+        <div class="spec-row"><dt>车主</dt><dd>阿凯</dd></div>
+        <div class="spec-row"><dt>车型</dt><dd>Mazda RX-7 (FD3S)</dd></div>
+        <div class="spec-row"><dt>年份</dt><dd class="mono">1993</dd></div>
+        <div class="spec-row"><dt>里程</dt><dd class="mono">162,400 km</dd></div>
+        <div class="spec-row"><dt>引擎</dt><dd class="mono">13B-REW</dd></div>
+        <div class="spec-row"><dt>改装</dt><dd>涡轮 / 进气 / 悬挂</dd></div>
+        <div class="spec-row"><dt>保养</dt><dd>2025-06 机油，2025-01 变速箱</dd></div>
+        <div class="spec-row"><dt>车格</dt><dd>机械 · 直接 · 不肯妥协</dd></div>
+      </dl>
+
+      <p class="doc-note">你的车格，由你自己定义。</p>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section class="section" id="social">
+    <div class="container grid-12">
+      <div class="col-side">
+        <span class="label">社交</span>
+      </div>
+      <div class="col-main">
+        <h2 class="display-2">分享你的车格。</h2>
+        <p class="body-lg">关注他人的车，看看每辆车背后的人。</p>
+
+        <ul class="feature-list">
+          <li>
+            <span class="feature-key">关注</span>
+            <span class="feature-text">按品牌、车型与车格标签，找到同好。</span>
+          </li>
+          <li>
+            <span class="feature-key">动态</span>
+            <span class="feature-text">你的更新会出现在关注者的车库动态里。</span>
+          </li>
+          <li>
+            <span class="feature-key">车库</span>
+            <span class="feature-text">收藏你看过的车，建成自己的车库。</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS (Chongqing) -->
+  <section class="section" id="events">
+    <div class="container grid-12">
+      <div class="col-side">
+        <span class="label">活动</span>
+      </div>
+      <div class="col-main">
+        <h2 class="display-2 event-title">
+          <img class="event-icon" src="assets/icons/place.png" alt="" width="32" height="32">
+          车格在重庆。
+        </h2>
+        <p class="body-lg">车格会在重庆举办线下活动。开上你的车，来见见面。</p>
+
+        <div class="join">
+          <div class="qr-frame">
+            <img src="assets/wechat-qr.jpg" alt="CARACTER 微信二维码" width="180" height="180">
+          </div>
+          <p class="join-note">扫码备注「车格」，加入社群。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <img class="footer-logo" src="assets/caracter-logo.png" alt="CARACTER">
+    <span class="footer-meta">© 2026 CARACTER</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var tools = document.querySelector('.nav-tools');
+  if (!tools) return;
+  var btn = tools.querySelector('.nav-trigger');
+  function close() {
+    tools.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    var open = tools.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!tools.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+})();
+</script>
+
+</body>
+</html>
