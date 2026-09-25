@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CARACTER — 车格</title>
-<meta name="description" content="CARACTER 为你的车建档并分享它的性格。每辆车都有自己的性格。">
+<meta name="description" content="CARACTER 是为汽车建立身份、记录经历、表达性格的数字车格。每辆车，都有自己的性格。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,9 +16,7 @@
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a class="brand" href="#top" aria-label="CARACTER 首页">
-      <img class="brand-logo" src="assets/caracter-logo.png" alt="CARACTER">
-    </a>
+    <span class="brand-slot" aria-hidden="true"></span>
     <nav class="nav" aria-label="主导航">
       <a href="#apps">应用</a>
       <div class="nav-tools">
@@ -32,127 +30,241 @@
           </div>
         </div>
       </div>
-      <a href="#events">活动</a>
+      <a href="#join">加入</a>
     </nav>
+    <a class="logo-morph" href="#top" aria-label="CARACTER">
+      <img src="assets/caracter-logo.svg" alt="">
+    </a>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- HERO + APPS (first screen) -->
+  <!-- 01 HERO -->
   <section class="hero" id="top">
     <div class="container">
-      <img class="hero-logo" src="assets/caracter-logo.png" alt="CARACTER">
+      <div class="hero-logo-slot">
+        <img class="hero-logo-fallback" src="assets/caracter-logo.svg" alt="CARACTER">
+      </div>
 
       <h1 class="hero-title">
         <span class="hero-title-cn">车格</span>
-        <span class="hero-title-sub">每辆车都有自己的性格</span>
+        <span class="hero-title-sub">每辆车，都有自己的性格。</span>
       </h1>
-      <p class="hero-title-en">Every car has its character.</p>
+      <p class="hero-title-en">Every car has their character.</p>
 
-      <div class="apps" id="apps">
-        <div class="app">
-          <img class="app-icon" src="assets/icons/ios.png" alt="" width="84" height="84">
-          <span class="app-name">iOS</span>
-          <span class="status status-soon"><span class="dot"></span>敬请期待</span>
-        </div>
-        <div class="app">
-          <img class="app-icon" src="assets/icons/android.png" alt="" width="84" height="84">
-          <span class="app-name">Android</span>
-          <span class="status status-soon"><span class="dot"></span>敬请期待</span>
-        </div>
-        <div class="app">
-          <img class="app-icon" src="assets/icons/wechat.png" alt="" width="84" height="84">
-          <span class="app-name">微信小程序</span>
-          <span class="status status-soon"><span class="dot"></span>敬请期待</span>
-        </div>
+      <p class="hero-lead">CARACTER 是为汽车建立身份、记录经历、表达性格的数字车格。</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#apps">创建车格</a>
+        <a class="btn btn-ghost" href="#why">了解 CARACTER</a>
+      </div>
+
+      <div class="app-line">
+        <ul class="app-line-list">
+          <li><img src="assets/icons/ios.png" alt="">iOS</li>
+          <li><img src="assets/icons/android.png" alt="">Android</li>
+          <li><img src="assets/icons/wechat.png" alt="">微信小程序</li>
+        </ul>
+        <span class="app-line-status">即将上线</span>
       </div>
     </div>
   </section>
 
-  <!-- RECORD -->
-  <section class="section" id="record">
-    <div class="container grid-12">
-      <div class="col-side">
-        <span class="label">记录</span>
-      </div>
-      <div class="col-main">
-        <h2 class="display-2">为你的车，记下它的性格。</h2>
-        <p class="body-lg">车型、年份、里程、引擎、改装与保养，全都保存在一张车格里。随时更新，不会丢失。</p>
-        <p class="body">每一次改装、每一次保养都是一条记录。时间久了，这张车格就是这辆车全部的经历。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ID CARD (inverted) -->
-  <section class="idcard">
+  <!-- 02 为什么 -->
+  <section class="section statement" id="why">
     <div class="container">
-      <div class="doc-head">
-        <span class="doc-label">车格</span>
-        <span class="doc-no">CARACTER ID</span>
+      <span class="label"><img class="label-icon" src="assets/icons/sections/lightbulb.png" alt="" width="20" height="20">为什么</span>
+      <h2 class="statement-title">一辆车，不只是参数。</h2>
+
+      <div class="contrast">
+        <div class="contrast-col">
+          <p class="contrast-k">传统的车辆信息告诉你</p>
+          <p class="contrast-v">它是什么。</p>
+        </div>
+        <div class="contrast-col">
+          <p class="contrast-k">CARACTER 想记录的是</p>
+          <p class="contrast-v">它经历过什么。<br>它变成了什么。<br>它是谁。</p>
+        </div>
       </div>
 
-      <dl class="card-spec">
-        <div class="spec-row"><dt>车主</dt><dd>阿凯</dd></div>
-        <div class="spec-row"><dt>车型</dt><dd>Mazda RX-7 (FD3S)</dd></div>
-        <div class="spec-row"><dt>年份</dt><dd class="mono">1993</dd></div>
-        <div class="spec-row"><dt>里程</dt><dd class="mono">162,400 km</dd></div>
-        <div class="spec-row"><dt>引擎</dt><dd class="mono">13B-REW</dd></div>
-        <div class="spec-row"><dt>改装</dt><dd>涡轮 / 进气 / 悬挂</dd></div>
-        <div class="spec-row"><dt>保养</dt><dd>2025-06 机油，2025-01 变速箱</dd></div>
-        <div class="spec-row"><dt>车格</dt><dd>机械 · 直接 · 不肯妥协</dd></div>
-      </dl>
+      <ul class="creed">
+        <li>车型是身份。</li>
+        <li>改装是选择。</li>
+        <li>里程是时间。</li>
+        <li>记录是经历。</li>
+      </ul>
 
-      <p class="doc-note">你的车格，由你自己定义。</p>
+      <p class="statement-close">而这些，最终组成一辆车的性格。</p>
     </div>
   </section>
 
-  <!-- SOCIAL -->
-  <section class="section" id="social">
-    <div class="container grid-12">
-      <div class="col-side">
-        <span class="label">社交</span>
-      </div>
-      <div class="col-main">
-        <h2 class="display-2">分享你的车格。</h2>
-        <p class="body-lg">关注他人的车，看看每辆车背后的人。</p>
+  <!-- 03 车格 -->
+  <section class="section" id="idcard">
+    <div class="container">
+      <span class="label"><img class="label-icon" src="assets/icons/sections/badge.png" alt="" width="20" height="20">车格</span>
+      <h2 class="display-2">一辆车，一张 CARACTER ID。</h2>
+    </div>
 
-        <ul class="feature-list">
+    <div class="container grid-12 idcard-grid">
+      <div class="col-demo">
+        <div class="demo-card">
+          <span class="demo-badge">DEMO CAR</span>
+
+          <span class="demo-label">CARACTER ID</span>
+
+          <div class="demo-model">
+            <span class="demo-make">FORD FOCUS</span>
+            <span class="demo-trim">MK2.5</span>
+          </div>
+
+          <div class="demo-meta">
+            <span>2009</span>
+            <span>2.0 MT</span>
+            <span>126,800 km</span>
+          </div>
+
+          <ul class="demo-tags">
+            <li>机械</li>
+            <li>直接</li>
+            <li>顽固</li>
+          </ul>
+
+          <div class="demo-block">
+            <span class="demo-block-label">MODIFICATIONS</span>
+            <p>BBS LM</p>
+            <p>B12</p>
+            <p>AP Racing</p>
+          </div>
+
+          <div class="demo-block">
+            <span class="demo-block-label">MAINTENANCE</span>
+            <p>2024-03 机油　2025-01 刹车　2025-06 轮胎</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-explain">
+        <ul class="explain-list">
           <li>
-            <span class="feature-key">关注</span>
-            <span class="feature-text">按品牌、车型与车格标签，找到同好。</span>
+            <span class="explain-k">车辆身份</span>
+            <span class="explain-v">车型、年份、发动机、里程……</span>
           </li>
           <li>
-            <span class="feature-key">动态</span>
-            <span class="feature-text">你的更新会出现在关注者的车库动态里。</span>
+            <span class="explain-k">改装记录</span>
+            <span class="explain-v">每一次改变，都留下痕迹。</span>
           </li>
           <li>
-            <span class="feature-key">车库</span>
-            <span class="feature-text">收藏你看过的车，建成自己的车库。</span>
+            <span class="explain-k">保养记录</span>
+            <span class="explain-v">让车辆的维护历史有迹可循。</span>
+          </li>
+          <li>
+            <span class="explain-k">性格标签</span>
+            <span class="explain-v">用自己的方式定义这辆车。</span>
           </li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- EVENTS (Chongqing) -->
-  <section class="section" id="events">
+  <!-- 04 时间线 -->
+  <section class="section" id="timeline">
     <div class="container grid-12">
       <div class="col-side">
-        <span class="label">活动</span>
+        <span class="label"><img class="label-icon" src="assets/icons/sections/timeline.png" alt="" width="20" height="20">时间线</span>
       </div>
       <div class="col-main">
-        <h2 class="display-2 event-title">
-          <img class="event-icon" src="assets/icons/place.png" alt="" width="32" height="32">
-          车格在重庆。
-        </h2>
-        <p class="body-lg">车格会在重庆举办线下活动。开上你的车，来见见面。</p>
+        <h2 class="display-2">车会变，车格也会变。</h2>
 
-        <div class="join">
+        <ol class="timeline">
+          <li><span class="tl-year">2019</span><span class="tl-text">原厂</span></li>
+          <li><span class="tl-year">2021</span><span class="tl-text">第一套轮毂</span></li>
+          <li><span class="tl-year">2022</span><span class="tl-text">悬挂升级</span></li>
+          <li><span class="tl-year">2024</span><span class="tl-text">赛道化</span></li>
+          <li><span class="tl-year">2026</span><span class="tl-text">重新定义</span></li>
+        </ol>
+
+        <p class="statement-close">记录一辆车的变化，而不是只记录它现在的样子。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 性格 -->
+  <section class="section" id="character">
+    <div class="container grid-12">
+      <div class="col-side">
+        <span class="label"><img class="label-icon" src="assets/icons/sections/emoji_emotions.png" alt="" width="20" height="20">性格</span>
+      </div>
+      <div class="col-main">
+        <h2 class="display-2">参数描述一辆车。性格定义一辆车。</h2>
+
+        <ul class="tags">
+          <li>机械</li>
+          <li>直接</li>
+          <li>优雅</li>
+          <li>暴躁</li>
+          <li>纯粹</li>
+          <li>顽固</li>
+          <li>克制</li>
+          <li>疯狂</li>
+        </ul>
+
+        <p class="statement-close">没有标准答案。你的车是什么性格，由你决定。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 愿景 -->
+  <section class="section vision" id="vision">
+    <div class="container">
+      <span class="label"><img class="label-icon" src="assets/icons/sections/visibility.png" alt="" width="20" height="20">愿景</span>
+      <h2 class="vision-title">CARACTER 正在建立。</h2>
+      <p class="vision-lead">我们希望有一天，每一辆车都有属于自己的 CARACTER ID。</p>
+      <p class="vision-body">它记录这辆车从拥有、改装、保养，到一次次上路的经历。</p>
+      <p class="vision-close">最终，它不只是一份车辆档案。<br>而是一辆车的一生。</p>
+    </div>
+  </section>
+
+  <!-- 07 上线 / 加入 -->
+  <section class="section" id="apps">
+    <div class="container grid-12">
+      <div class="col-side">
+        <span class="label"><img class="label-icon" src="assets/icons/sections/system_update.png" alt="" width="20" height="20">上线</span>
+      </div>
+      <div class="col-main">
+        <h2 class="display-2">CARACTER 即将上线。</h2>
+
+        <ul class="platforms">
+          <li class="platform">
+            <span class="platform-name">
+              <img class="app-icon" src="assets/icons/ios.png" alt="" width="24" height="24">iOS
+            </span>
+            <span class="platform-status">COMING SOON</span>
+          </li>
+          <li class="platform">
+            <span class="platform-name">
+              <img class="app-icon" src="assets/icons/android.png" alt="" width="24" height="24">Android
+            </span>
+            <span class="platform-status">COMING SOON</span>
+          </li>
+          <li class="platform">
+            <span class="platform-name">
+              <img class="app-icon" src="assets/icons/wechat.png" alt="" width="24" height="24">微信小程序
+            </span>
+            <span class="platform-status">COMING SOON</span>
+          </li>
+        </ul>
+
+        <div class="join" id="join">
           <div class="qr-frame">
             <img src="assets/wechat-qr.jpg" alt="CARACTER 微信二维码" width="180" height="180">
           </div>
-          <p class="join-note">扫码备注「车格」，加入社群。</p>
+          <div class="join-copy">
+            <p class="join-title">加入 CARACTER</p>
+            <p class="join-note">扫码备注「车格」，加入社群。</p>
+            <p class="join-note join-note-muted">第一批 CARACTER 玩家正在集结。</p>
+            <p class="join-note join-note-muted">车格也在重庆办线下活动。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -162,31 +274,99 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <img class="footer-logo" src="assets/caracter-logo.png" alt="CARACTER">
+    <div class="footer-brand">
+      <img class="footer-logo" src="assets/caracter-logo.svg" alt="CARACTER">
+      <p class="footer-line">Every car has their character.</p>
+      <p class="footer-cn">车格</p>
+    </div>
     <span class="footer-meta">© 2026 CARACTER</span>
   </div>
 </footer>
 
 <script>
 (function () {
+  /* tools dropdown */
   var tools = document.querySelector('.nav-tools');
-  if (!tools) return;
-  var btn = tools.querySelector('.nav-trigger');
-  function close() {
-    tools.classList.remove('is-open');
-    btn.setAttribute('aria-expanded', 'false');
+  if (tools) {
+    var btn = tools.querySelector('.nav-trigger');
+    function close() {
+      tools.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var open = tools.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!tools.contains(e.target)) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
   }
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-    var open = tools.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.addEventListener('click', function (e) {
-    if (!tools.contains(e.target)) close();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') close();
-  });
+
+  /* logo: hero -> topbar, scroll-linked */
+  var html = document.documentElement;
+  var morph = document.querySelector('.logo-morph');
+  var slot = document.querySelector('.hero-logo-slot');
+  var dock = document.querySelector('.brand-slot');
+  if (!morph || !slot || !dock) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var heroW = 0, heroLeft = 0, heroTopDoc = 0, dockLeft = 0, dockTop = 0, dockW = 0, distance = 200;
+
+  function measure() {
+    var s = slot.getBoundingClientRect();
+    var b = dock.getBoundingClientRect();
+    heroW = s.width;
+    heroLeft = s.left;
+    heroTopDoc = s.top + window.scrollY;
+    dockLeft = b.left;
+    dockTop = b.top;
+    dockW = b.width;
+    distance = Math.max(220, (heroTopDoc - dockTop) * 2);
+  }
+
+  function ease(p) {
+    return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+  }
+
+  function frame() {
+    var y = window.scrollY;
+    var p = y / distance;
+    p = p < 0 ? 0 : (p > 1 ? 1 : p);
+    var e = reduce ? (y >= distance ? 1 : 0) : ease(p);
+    var heroTop = heroTopDoc - y;
+    var top = heroTop + (dockTop - heroTop) * e;
+    var left = heroLeft + (dockLeft - heroLeft) * e;
+    var w = heroW + (dockW - heroW) * e;
+    morph.style.width = w + 'px';
+    morph.style.transform = 'translate(' + left + 'px,' + top + 'px)';
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      ticking = false;
+      frame();
+    });
+    frame();
+  }
+
+  function init() {
+    measure();
+    html.classList.add('has-morph');
+    morph.style.width = heroW + 'px';
+    frame();
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { measure(); frame(); });
+  window.addEventListener('load', init);
+  if (document.readyState === 'complete') init();
 })();
 </script>
 
