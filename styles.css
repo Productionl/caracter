@@ -789,17 +789,19 @@ html:not(.is-init) .brand-logo{transition:none;}
 
 .footer-inner{
   display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:24px;
-  padding-block:48px;
-  flex-wrap:wrap;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:22px;
+  padding-block:56px;
+  text-align:center;
 }
 
 .footer-brand{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  align-items:center;
+  gap:12px;
 }
 
 .footer-logo{
@@ -907,8 +909,8 @@ html:not(.is-init) .brand-logo{transition:none;}
 
   .footer-inner{
     flex-direction:column;
-    align-items:flex-start;
-    gap:24px;
+    align-items:center;
+    gap:22px;
   }
 }
 
