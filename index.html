@@ -16,7 +16,9 @@
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <span class="brand-slot" aria-hidden="true"></span>
+    <a class="brand" href="#top" aria-label="CARACTER">
+      <img class="brand-logo" src="assets/caracter-logo.svg" alt="">
+    </a>
     <nav class="nav" aria-label="主导航">
       <a href="#apps">应用</a>
       <div class="nav-tools">
@@ -32,9 +34,6 @@
       </div>
       <a href="#join">加入</a>
     </nav>
-    <a class="logo-morph" href="#top" aria-label="CARACTER">
-      <img src="assets/caracter-logo.svg" alt="">
-    </a>
   </div>
 </header>
 
@@ -43,8 +42,8 @@
   <!-- 01 HERO -->
   <section class="hero" id="top">
     <div class="container">
-      <div class="hero-logo-slot">
-        <img class="hero-logo-fallback" src="assets/caracter-logo.svg" alt="CARACTER">
+      <div class="logo-sticky">
+        <img class="logo-morph" src="assets/caracter-logo.svg" alt="CARACTER">
       </div>
 
       <h1 class="hero-title">
@@ -74,7 +73,7 @@
   <!-- 02 为什么 -->
   <section class="section statement" id="why">
     <div class="container">
-      <span class="label"><img class="label-icon" src="assets/icons/sections/lightbulb.png" alt="" width="20" height="20">为什么</span>
+      <span class="label"><img class="label-icon" src="assets/icons/sections/lightbulb.png" alt="" width="28" height="28">为什么</span>
       <h2 class="statement-title">一辆车，不只是参数。</h2>
 
       <div class="contrast">
@@ -102,7 +101,7 @@
   <!-- 03 车格 -->
   <section class="section" id="idcard">
     <div class="container">
-      <span class="label"><img class="label-icon" src="assets/icons/sections/badge.png" alt="" width="20" height="20">车格</span>
+      <span class="label"><img class="label-icon" src="assets/icons/sections/badge.png" alt="" width="28" height="28">车格</span>
       <h2 class="display-2">一辆车，一张 CARACTER ID。</h2>
     </div>
 
@@ -171,7 +170,7 @@
   <section class="section" id="timeline">
     <div class="container grid-12">
       <div class="col-side">
-        <span class="label"><img class="label-icon" src="assets/icons/sections/timeline.png" alt="" width="20" height="20">时间线</span>
+        <span class="label"><img class="label-icon" src="assets/icons/sections/timeline.png" alt="" width="28" height="28">时间线</span>
       </div>
       <div class="col-main">
         <h2 class="display-2">车会变，车格也会变。</h2>
@@ -193,7 +192,7 @@
   <section class="section" id="character">
     <div class="container grid-12">
       <div class="col-side">
-        <span class="label"><img class="label-icon" src="assets/icons/sections/emoji_emotions.png" alt="" width="20" height="20">性格</span>
+        <span class="label"><img class="label-icon" src="assets/icons/sections/emoji_emotions.png" alt="" width="28" height="28">性格</span>
       </div>
       <div class="col-main">
         <h2 class="display-2">参数描述一辆车。性格定义一辆车。</h2>
@@ -217,7 +216,7 @@
   <!-- 06 愿景 -->
   <section class="section vision" id="vision">
     <div class="container">
-      <span class="label"><img class="label-icon" src="assets/icons/sections/visibility.png" alt="" width="20" height="20">愿景</span>
+      <span class="label"><img class="label-icon" src="assets/icons/sections/visibility.png" alt="" width="28" height="28">愿景</span>
       <h2 class="vision-title">CARACTER 正在建立。</h2>
       <p class="vision-lead">我们希望有一天，每一辆车都有属于自己的 CARACTER ID。</p>
       <p class="vision-body">它记录这辆车从拥有、改装、保养，到一次次上路的经历。</p>
@@ -229,7 +228,7 @@
   <section class="section" id="apps">
     <div class="container grid-12">
       <div class="col-side">
-        <span class="label"><img class="label-icon" src="assets/icons/sections/system_update.png" alt="" width="20" height="20">上线</span>
+        <span class="label"><img class="label-icon" src="assets/icons/sections/system_update.png" alt="" width="28" height="28">上线</span>
       </div>
       <div class="col-main">
         <h2 class="display-2">CARACTER 即将上线。</h2>
@@ -306,25 +305,28 @@
     });
   }
 
-  /* logo: hero -> topbar, scroll-linked */
+  /* logo: pinned by native sticky, scaled by JS only */
   var html = document.documentElement;
-  var morph = document.querySelector('.logo-morph');
-  var slot = document.querySelector('.hero-logo-slot');
-  var dock = document.querySelector('.brand-slot');
-  if (!morph || !slot || !dock) return;
+  var img = document.querySelector('.logo-morph');
+  var sticky = document.querySelector('.logo-sticky');
+  var heroContainer = document.querySelector('.hero .container');
+  var brand = document.querySelector('.brand-logo');
+  if (!img || !sticky || !heroContainer || !brand) return;
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var heroW = 0, heroLeft = 0, heroTopDoc = 0, dockLeft = 0, dockTop = 0, dockW = 0, distance = 200;
+  var heroW = 1, heroTopDoc = 0, dockW = 0, dockTop = 0, distance = 220, ratio = 1;
+  var last = '';
 
   function measure() {
-    var s = slot.getBoundingClientRect();
-    var b = dock.getBoundingClientRect();
-    heroW = s.width;
-    heroLeft = s.left;
-    heroTopDoc = s.top + window.scrollY;
-    dockLeft = b.left;
-    dockTop = b.top;
-    dockW = b.width;
+    var hr = heroContainer.getBoundingClientRect();
+    var sr = sticky.getBoundingClientRect();
+    var br = brand.getBoundingClientRect();
+    heroTopDoc = hr.top + window.scrollY;
+    heroW = sr.width || 1;
+    dockW = br.width;
+    dockTop = br.top;
+    sticky.style.top = dockTop + 'px';
+    ratio = dockW / heroW;
     distance = Math.max(220, (heroTopDoc - dockTop) * 2);
   }
 
@@ -337,12 +339,17 @@
     var p = y / distance;
     p = p < 0 ? 0 : (p > 1 ? 1 : p);
     var e = reduce ? (y >= distance ? 1 : 0) : ease(p);
-    var heroTop = heroTopDoc - y;
-    var top = heroTop + (dockTop - heroTop) * e;
-    var left = heroLeft + (dockLeft - heroLeft) * e;
-    var w = heroW + (dockW - heroW) * e;
-    morph.style.width = w + 'px';
-    morph.style.transform = 'translate(' + left + 'px,' + top + 'px)';
+    var k = 1 + (ratio - 1) * e;
+    var tf = 'scale(' + k.toFixed(4) + ')';
+    if (tf !== last) {
+      last = tf;
+      img.style.transform = tf;
+    }
+    if (y >= distance) {
+      if (!html.classList.contains('is-docked')) html.classList.add('is-docked');
+    } else if (html.classList.contains('is-docked')) {
+      html.classList.remove('is-docked');
+    }
   }
 
   var ticking = false;
@@ -353,13 +360,10 @@
       ticking = false;
       frame();
     });
-    frame();
   }
 
   function init() {
     measure();
-    html.classList.add('has-morph');
-    morph.style.width = heroW + 'px';
     frame();
   }
 

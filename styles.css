@@ -112,7 +112,7 @@ main section[id],
 .label{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   font-size:13px;
   line-height:1.4;
   letter-spacing:.12em;
@@ -120,8 +120,8 @@ main section[id],
 }
 
 .label-icon{
-  width:20px;
-  height:20px;
+  width:28px;
+  height:28px;
   flex:none;
   display:block;
 }
@@ -170,11 +170,22 @@ main section[id],
   padding-block:22px;
 }
 
-.brand-slot{
+.brand{
+  display:flex;
+  align-items:center;
+}
+
+.brand-logo{
   display:block;
-  width:112px;
   height:11px;
-  flex:none;
+  width:auto;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+}
+html.is-docked .brand-logo{
+  opacity:1;
+  pointer-events:auto;
 }
 
 .nav{
@@ -243,46 +254,36 @@ main section[id],
 .menu-item:hover{background:var(--ink-100);}
 .menu-label{white-space:nowrap;}
 
-/* ---------- moving logo ---------- */
+/* ---------- moving logo (native sticky + JS scale) ---------- */
+
+.logo-sticky{
+  position:sticky;
+  top:28px;
+  width:min(86%,920px);
+  z-index:60;
+}
 
 .logo-morph{
-  position:fixed;
-  top:0;
-  left:0;
-  transform-origin:0 0;
-  z-index:40;
-  visibility:hidden;
-  will-change:transform;
-}
-.logo-morph img{
   display:block;
   width:100%;
   height:auto;
+  transform-origin:0 0;
+  backface-visibility:hidden;
+  will-change:transform;
+  animation:reveal 1.15s cubic-bezier(.22,.61,.36,1) .15s both;
 }
 
-html.has-morph .logo-morph{visibility:visible;}
-html.has-morph .hero-logo-fallback{visibility:hidden;}
+html.is-docked .logo-sticky{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .12s ease;
+}
 
 /* ---------- hero ---------- */
 
 .hero{
   padding-top:clamp(48px,7vw,96px);
   padding-bottom:var(--section-y);
-}
-
-.hero-logo-slot{
-  width:min(86%,920px);
-  aspect-ratio:16084.5 / 1561.5;
-}
-
-.hero-logo-fallback{
-  display:block;
-  width:100%;
-  height:auto;
-  animation:reveal 1.15s cubic-bezier(.22,.61,.36,1) .15s both;
-}
-html.has-morph .logo-morph img{
-  animation:reveal 1.15s cubic-bezier(.22,.61,.36,1) .15s both;
 }
 
 @keyframes reveal{
@@ -841,7 +842,7 @@ html.has-morph .logo-morph img{
     gap:16px;
     padding-block:16px;
   }
-  .brand-slot{width:88px;height:9px;}
+  .brand-logo{height:9px;}
   .nav{gap:20px;font-size:14px;}
   .nav > a,
   .nav-trigger{padding-block:6px;}
@@ -857,12 +858,14 @@ html.has-morph .logo-morph img{
   .nav-menu-panel{min-width:250px;}
   .menu-item{padding:16px 18px;}
 
+  .label-icon{width:24px;height:24px;}
+
   .grid-12{grid-template-columns:1fr;gap:0;}
   .col-side,.col-main,.col-demo,.col-explain{grid-column:1 / -1;}
   .col-side{margin-bottom:16px;}
 
   .hero{padding-top:44px;}
-  .hero-logo-slot{width:100%;}
+  .logo-sticky{width:100%;}
   .hero-title{margin-top:32px;gap:12px;}
   .hero-title-en{letter-spacing:.12em;}
 
@@ -904,13 +907,11 @@ html.has-morph .logo-morph img{
 @media (max-width:380px){
   .hero-title-cn{letter-spacing:.08em;}
   .nav{gap:16px;}
-  .brand-slot{width:76px;}
 }
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
-  .hero-logo-fallback,
-  html.has-morph .logo-morph img{animation:none;clip-path:none;}
+  .logo-morph{animation:none;clip-path:none;}
   .nav-menu,
   .menu-item,
   .nav > a,
