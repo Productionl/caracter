@@ -181,7 +181,7 @@ main section[id],
   width:auto;
   opacity:0;
   pointer-events:none;
-  transition:opacity .2s ease;
+  transition:opacity .3s ease .12s;
 }
 html.is-docked .brand-logo{
   opacity:1;
@@ -261,6 +261,7 @@ html.is-docked .brand-logo{
   top:28px;
   width:min(86%,920px);
   z-index:60;
+  transition:opacity .3s ease;
 }
 
 .logo-morph{
@@ -270,14 +271,21 @@ html.is-docked .brand-logo{
   transform-origin:0 0;
   backface-visibility:hidden;
   will-change:transform;
-  animation:reveal 1.15s cubic-bezier(.22,.61,.36,1) .15s both;
+  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  animation:fade-in .6s ease both;
 }
+
+html.is-docked .logo-morph{transform:scale(var(--dock-scale,.12));}
 
 html.is-docked .logo-sticky{
   opacity:0;
   pointer-events:none;
-  transition:opacity .12s ease;
 }
+
+/* do not animate on the very first paint (e.g. landing mid-page) */
+html:not(.is-init) .logo-morph,
+html:not(.is-init) .logo-sticky,
+html:not(.is-init) .brand-logo{transition:none;}
 
 /* ---------- hero ---------- */
 
@@ -286,9 +294,9 @@ html.is-docked .logo-sticky{
   padding-bottom:var(--section-y);
 }
 
-@keyframes reveal{
-  from{clip-path:inset(0 100% 0 0);}
-  to{clip-path:inset(0 0 0 0);}
+@keyframes fade-in{
+  from{opacity:0;}
+  to{opacity:1;}
 }
 
 .hero-title{
@@ -911,7 +919,9 @@ html.is-docked .logo-sticky{
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
-  .logo-morph{animation:none;clip-path:none;}
+  .logo-morph,
+  .logo-sticky,
+  .brand-logo{animation:none;transition:none;}
   .nav-menu,
   .menu-item,
   .nav > a,

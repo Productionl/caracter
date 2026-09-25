@@ -43,7 +43,7 @@
   <section class="hero" id="top">
     <div class="container">
       <div class="logo-sticky">
-        <img class="logo-morph" src="assets/caracter-logo.svg" alt="CARACTER">
+        <img class="logo-morph" src="assets/caracter-logo-morph.png" alt="CARACTER">
       </div>
 
       <h1 class="hero-title">
@@ -305,7 +305,7 @@
     });
   }
 
-  /* logo: pinned by native sticky, scaled by JS only */
+  /* logo: native sticky pins it; CSS transition scales it; JS only toggles a class */
   var html = document.documentElement;
   var img = document.querySelector('.logo-morph');
   var sticky = document.querySelector('.logo-sticky');
@@ -313,58 +313,45 @@
   var brand = document.querySelector('.brand-logo');
   if (!img || !sticky || !heroContainer || !brand) return;
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var heroW = 1, heroTopDoc = 0, dockW = 0, dockTop = 0, distance = 220, ratio = 1;
-  var last = '';
+  var threshold = 200;
 
   function measure() {
     var hr = heroContainer.getBoundingClientRect();
     var sr = sticky.getBoundingClientRect();
     var br = brand.getBoundingClientRect();
-    heroTopDoc = hr.top + window.scrollY;
-    heroW = sr.width || 1;
-    dockW = br.width;
-    dockTop = br.top;
+    var heroW = sr.width || 1;
+    var dockW = br.width || 1;
+    var heroTopDoc = hr.top + window.scrollY;
+    var dockTop = br.top;
     sticky.style.top = dockTop + 'px';
-    ratio = dockW / heroW;
-    distance = Math.max(220, (heroTopDoc - dockTop) * 2);
-  }
-
-  function ease(p) {
-    return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    html.style.setProperty('--dock-scale', (dockW / heroW).toFixed(4));
+    threshold = Math.max(120, heroTopDoc - dockTop);
   }
 
   function frame() {
-    var y = window.scrollY;
-    var p = y / distance;
-    p = p < 0 ? 0 : (p > 1 ? 1 : p);
-    var e = reduce ? (y >= distance ? 1 : 0) : ease(p);
-    var k = 1 + (ratio - 1) * e;
-    var tf = 'scale(' + k.toFixed(4) + ')';
-    if (tf !== last) {
-      last = tf;
-      img.style.transform = tf;
+    var on = window.scrollY >= threshold;
+    if (on !== html.classList.contains('is-docked')) {
+      html.classList.toggle('is-docked', on);
     }
-    if (y >= distance) {
-      if (!html.classList.contains('is-docked')) html.classList.add('is-docked');
-    } else if (html.classList.contains('is-docked')) {
-      html.classList.remove('is-docked');
-    }
+  }
+
+  function enableTransitions() {
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(function () { html.classList.add('is-init'); });
+    });
   }
 
   var ticking = false;
   function onScroll() {
     if (ticking) return;
     ticking = true;
-    window.requestAnimationFrame(function () {
-      ticking = false;
-      frame();
-    });
+    window.requestAnimationFrame(function () { ticking = false; frame(); });
   }
 
   function init() {
     measure();
     frame();
+    enableTransitions();
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
