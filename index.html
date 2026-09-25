@@ -305,27 +305,24 @@
     });
   }
 
-  /* logo: native sticky pins it; CSS transition scales it; JS only toggles a class */
+  /* hero logo scrolls under the topbar; JS only toggles the docked state */
   var html = document.documentElement;
-  var img = document.querySelector('.logo-morph');
   var sticky = document.querySelector('.logo-sticky');
+  var topbar = document.querySelector('.topbar');
   var heroContainer = document.querySelector('.hero .container');
   var brand = document.querySelector('.brand-logo');
-  if (!img || !sticky || !heroContainer || !brand) return;
+  if (!sticky || !topbar || !heroContainer || !brand) return;
 
   var threshold = 200;
 
   function measure() {
     var hr = heroContainer.getBoundingClientRect();
     var sr = sticky.getBoundingClientRect();
-    var br = brand.getBoundingClientRect();
-    var heroW = sr.width || 1;
-    var dockW = br.width || 1;
+    var tr = topbar.getBoundingClientRect();
     var heroTopDoc = hr.top + window.scrollY;
-    var dockTop = br.top;
-    sticky.style.top = dockTop + 'px';
-    html.style.setProperty('--dock-scale', (dockW / heroW).toFixed(4));
-    threshold = Math.max(120, heroTopDoc - dockTop);
+    var logoH = sr.height || 1;
+    /* show the topbar logo once the hero logo has slid fully under the topbar */
+    threshold = Math.max(80, Math.round(heroTopDoc + logoH - tr.bottom));
   }
 
   function frame() {

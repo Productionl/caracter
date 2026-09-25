@@ -180,11 +180,14 @@ main section[id],
   height:11px;
   width:auto;
   opacity:0;
+  transform:scale(1.6);
+  transform-origin:left center;
   pointer-events:none;
-  transition:opacity .3s ease .12s;
+  transition:opacity .26s ease, transform .42s cubic-bezier(.22,.61,.36,1);
 }
 html.is-docked .brand-logo{
   opacity:1;
+  transform:scale(1);
   pointer-events:auto;
 }
 
@@ -254,37 +257,20 @@ html.is-docked .brand-logo{
 .menu-item:hover{background:var(--ink-100);}
 .menu-label{white-space:nowrap;}
 
-/* ---------- moving logo (native sticky + JS scale) ---------- */
+/* ---------- hero logo (scrolls under the sticky topbar) ---------- */
 
 .logo-sticky{
-  position:sticky;
-  top:28px;
   width:min(86%,920px);
-  z-index:60;
-  transition:opacity .3s ease;
 }
 
 .logo-morph{
   display:block;
   width:100%;
   height:auto;
-  transform-origin:0 0;
-  backface-visibility:hidden;
-  will-change:transform;
-  transition:transform .55s cubic-bezier(.22,.61,.36,1);
   animation:fade-in .6s ease both;
 }
 
-html.is-docked .logo-morph{transform:scale(var(--dock-scale,.12));}
-
-html.is-docked .logo-sticky{
-  opacity:0;
-  pointer-events:none;
-}
-
-/* do not animate on the very first paint (e.g. landing mid-page) */
-html:not(.is-init) .logo-morph,
-html:not(.is-init) .logo-sticky,
+/* do not animate the topbar logo on the very first paint */
 html:not(.is-init) .brand-logo{transition:none;}
 
 /* ---------- hero ---------- */
