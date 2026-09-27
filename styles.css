@@ -157,8 +157,7 @@ main section[id],
   position:sticky;
   top:0;
   z-index:50;
-  background:var(--ink-000);
-  border-bottom:1px solid var(--ink-100);
+  background:transparent;
 }
 
 .topbar-inner{
@@ -198,7 +197,7 @@ html.is-docked .brand-logo{
   align-items:center;
   gap:32px;
   font-size:14px;
-  color:var(--paper-200);
+  color:var(--paper-000);
 }
 .nav > a,
 .nav-trigger{
@@ -262,20 +261,17 @@ html.is-docked .brand-logo{
 .hero{padding:0;}
 
 .hero .container{
-  position:relative;
   display:flex;
   flex-direction:column;
-  justify-content:center;
-  align-items:center;
   min-height:calc(100svh - var(--topbar-h,70px));
-  padding-top:0;
-  padding-bottom:var(--topbar-h,70px);
 }
 
 .hero-lockup{
+  flex:1 1 auto;
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
   text-align:center;
 }
 
@@ -316,14 +312,12 @@ html:not(.is-init) .brand-logo{transition:none;}
 }
 
 .hero-foot{
-  position:absolute;
-  left:var(--margin);
-  right:var(--margin);
-  bottom:clamp(26px,4vh,56px);
+  flex:0 0 auto;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:24px;
+  padding-block:clamp(18px,2.6vh,36px) clamp(24px,4vh,52px);
 }
 
 .hero-title-en{
@@ -381,7 +375,10 @@ html:not(.is-init) .brand-logo{transition:none;}
   color:#FFFFFF;
   border-color:var(--signal);
 }
-.btn-ghost{color:var(--paper-100);}
+.btn-ghost{
+  border-color:var(--paper-000);
+  color:var(--paper-000);
+}
 .btn-ghost:hover{
   border-color:var(--paper-000);
   color:var(--paper-000);
@@ -860,13 +857,14 @@ html:not(.is-init) .brand-logo{transition:none;}
   .col-side{margin-bottom:16px;}
 
   .hero{padding:0;}
-  .hero .container{min-height:calc(100svh - var(--topbar-h,64px));padding-top:0;padding-bottom:var(--topbar-h,64px);}
+  .hero .container{min-height:calc(100svh - var(--topbar-h,64px));}
   .logo-sticky{width:min(84vw,420px);}
   .logo-cn{width:clamp(110px,32vw,170px);margin-top:14px;}
   .hero-slogans{margin-top:22px;gap:8px;}
   .hero-title-en{letter-spacing:.12em;}
-  .hero-foot{flex-direction:column;align-items:flex-start;gap:16px;bottom:22px;}
-  .hero-lead{max-width:100%;}
+  .hero-foot{flex-direction:column;align-items:center;gap:16px;text-align:center;padding-block:16px 26px;}
+  .hero-lead{max-width:100%;text-align:center;}
+  .hero-actions{justify-content:center;}
 
   .display-2{margin-bottom:22px;}
 
