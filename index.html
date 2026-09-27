@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<div class="site-bg" id="site-bg" aria-hidden="true"></div>
+<div class="site-scrim" aria-hidden="true"></div>
+
 <a class="skip-link" href="#main">跳到主要内容</a>
 
 <header class="topbar">
@@ -42,30 +45,28 @@
   <!-- 01 HERO -->
   <section class="hero" id="top">
     <div class="container">
-      <div class="logo-sticky">
-        <img class="logo-morph" src="assets/caracter-logo-morph.png" alt="CARACTER">
+      <div class="hero-lockup">
+        <div class="hero-logos">
+          <div class="logo-sticky">
+            <img class="logo-morph" src="assets/caracter-logo.svg" alt="CARACTER">
+          </div>
+          <div class="logo-cn">
+            <img src="assets/chege-logo.svg" alt="车格">
+          </div>
+        </div>
+
+        <h1 class="hero-slogans">
+          <span class="hero-title-en">Every car has their character.</span>
+          <span class="hero-title-sub">每辆车，都有自己的性格。</span>
+        </h1>
       </div>
 
-      <h1 class="hero-title">
-        <span class="hero-title-cn">车格</span>
-        <span class="hero-title-sub">每辆车，都有自己的性格。</span>
-      </h1>
-      <p class="hero-title-en">Every car has their character.</p>
-
-      <p class="hero-lead">CARACTER 是为汽车建立身份、记录经历、表达性格的数字车格。</p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#apps">创建车格</a>
-        <a class="btn btn-ghost" href="#why">了解 CARACTER</a>
-      </div>
-
-      <div class="app-line">
-        <ul class="app-line-list">
-          <li><img src="assets/icons/ios.png" alt="">iOS</li>
-          <li><img src="assets/icons/android.png" alt="">Android</li>
-          <li><img src="assets/icons/wechat.png" alt="">微信小程序</li>
-        </ul>
-        <span class="app-line-status">即将上线</span>
+      <div class="hero-foot">
+        <p class="hero-lead">CARACTER，记录你的车，连接喜欢汽车的人。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#apps">获取</a>
+          <a class="btn btn-ghost" href="#why">了解 CARACTER</a>
+        </div>
       </div>
     </div>
   </section>
@@ -276,7 +277,7 @@
     <div class="footer-brand">
       <img class="footer-logo" src="assets/caracter-logo.svg" alt="CARACTER">
       <p class="footer-line">Every car has their character.</p>
-      <p class="footer-cn">车格</p>
+      <img class="footer-cn-logo" src="assets/chege-logo.svg" alt="车格">
     </div>
     <span class="footer-meta">© 2026 CARACTER</span>
   </div>
@@ -305,24 +306,36 @@
     });
   }
 
-  /* hero logo scrolls under the topbar; JS only toggles the docked state */
+  /* hero: entrance animation + logo scrolls under the topbar */
   var html = document.documentElement;
+  var hero = document.querySelector('.hero');
   var sticky = document.querySelector('.logo-sticky');
+  var logos = document.querySelector('.hero-logos');
+  var slogans = document.querySelector('.hero-slogans');
+  var lockup = document.querySelector('.hero-lockup');
   var topbar = document.querySelector('.topbar');
-  var heroContainer = document.querySelector('.hero .container');
   var brand = document.querySelector('.brand-logo');
-  if (!sticky || !topbar || !heroContainer || !brand) return;
+  if (!hero || !sticky || !logos || !slogans || !lockup || !topbar || !brand) return;
 
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var threshold = 200;
+  var started = false;
+
+  function docTop(el) {
+    var y = 0;
+    while (el) { y += el.offsetTop; el = el.offsetParent; }
+    return y;
+  }
 
   function measure() {
-    var hr = heroContainer.getBoundingClientRect();
-    var sr = sticky.getBoundingClientRect();
     var tr = topbar.getBoundingClientRect();
-    var heroTopDoc = hr.top + window.scrollY;
-    var logoH = sr.height || 1;
+    hero.style.setProperty('--topbar-h', tr.height + 'px');
+    var lockupH = lockup.offsetHeight || 0;
+    var logosH = logos.offsetHeight || 0;
+    hero.style.setProperty('--logo-shift', Math.max(0, Math.round((lockupH - logosH) / 2)) + 'px');
     /* show the topbar logo once the hero logo has slid fully under the topbar */
-    threshold = Math.max(80, Math.round(heroTopDoc + logoH - tr.bottom));
+    var logoBottomDoc = docTop(sticky) + (sticky.offsetHeight || 0);
+    threshold = Math.max(80, Math.round(logoBottomDoc - tr.bottom));
   }
 
   function frame() {
@@ -332,7 +345,13 @@
     }
   }
 
-  function enableTransitions() {
+  function start() {
+    measure();
+    frame();
+    if (!reduce && !started) {
+      started = true;
+      window.requestAnimationFrame(function () { hero.classList.add('is-enter'); });
+    }
     window.requestAnimationFrame(function () {
       window.requestAnimationFrame(function () { html.classList.add('is-init'); });
     });
@@ -345,18 +364,37 @@
     window.requestAnimationFrame(function () { ticking = false; frame(); });
   }
 
-  function init() {
-    measure();
-    frame();
-    enableTransitions();
-  }
-
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', function () { measure(); frame(); });
-  window.addEventListener('load', init);
-  if (document.readyState === 'complete') init();
+  window.addEventListener('load', start);
+  if (document.readyState === 'complete') start();
 })();
 </script>
+
+<script>
+(function () {
+  var scrim = document.querySelector('.site-scrim');
+  var bg = document.querySelector('.site-bg');
+  if (!scrim && !bg) return;
+  function update() {
+    var vh = window.innerHeight || 1;
+    var p = Math.min(1, Math.max(0, window.scrollY / (vh * 0.9)));
+    if (scrim) scrim.style.opacity = (0.38 + 0.56 * p).toFixed(3);
+    if (bg) bg.style.display = window.scrollY > vh * 1.15 ? 'none' : '';
+  }
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function () { ticking = false; update(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  update();
+})();
+</script>
+<script defer src="assets/gradient.js"></script>
 
 </body>
 </html>
