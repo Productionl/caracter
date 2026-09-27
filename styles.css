@@ -799,7 +799,7 @@ html:not(.is-init) .brand-logo{transition:none;}
 
 .footer-logo{
   display:block;
-  height:14px;
+  height:20px;
   width:auto;
   opacity:.8;
 }
