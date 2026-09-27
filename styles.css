@@ -160,6 +160,18 @@ main section[id],
   background:transparent;
 }
 
+.topbar::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,0));
+  opacity:0;
+  transition:opacity .3s ease;
+}
+html.is-scrolled .topbar::after{opacity:1;}
+
 .topbar-inner{
   position:relative;
   display:flex;
@@ -176,7 +188,7 @@ main section[id],
 
 .brand-logo{
   display:block;
-  height:24px;
+  height:30px;
   width:auto;
   opacity:0;
   transform:scale(1.6);
@@ -834,7 +846,7 @@ html:not(.is-init) .brand-logo{transition:none;}
     gap:16px;
     padding-block:16px;
   }
-  .brand-logo{height:18px;}
+  .brand-logo{height:22px;}
   .nav{gap:20px;font-size:14px;}
   .nav > a,
   .nav-trigger{padding-block:6px;}
@@ -911,6 +923,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   .hero-foot,
   .logo-morph,
   .brand-logo{animation:none;transition:none;}
+  .topbar::after,
   .nav-menu,
   .menu-item,
   .nav > a,
