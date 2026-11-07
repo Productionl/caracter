@@ -7,8 +7,24 @@
 <meta name="description" content="CARACTER 是为汽车建立身份、记录经历、表达性格的数字车格。每辆车，都有自己的性格。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<!-- Google Fonts 在国内经常连不上：它只做增强，绝不能阻塞首屏。
+     load 之后再异步插入，拿不到就用系统字体，页面照样立刻显示。 -->
+<script>
+(function () {
+  var href = 'https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap';
+  function load() {
+    if (document.querySelector('link[data-webfonts]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.setAttribute('data-webfonts', '');
+    document.head.appendChild(link);
+  }
+  if (document.readyState === 'complete') load();
+  else window.addEventListener('load', load);
+})();
+</script>
 </head>
 <body>
 
@@ -235,18 +251,6 @@
         <h2 class="display-2">CARACTER 即将上线。</h2>
 
         <ul class="platforms">
-          <li class="platform">
-            <span class="platform-name">
-              <img class="app-icon" src="assets/icons/ios.png" alt="" width="24" height="24">iOS
-            </span>
-            <span class="platform-status">COMING SOON</span>
-          </li>
-          <li class="platform">
-            <span class="platform-name">
-              <img class="app-icon" src="assets/icons/android.png" alt="" width="24" height="24">Android
-            </span>
-            <span class="platform-status">COMING SOON</span>
-          </li>
           <li class="platform">
             <span class="platform-name">
               <img class="app-icon" src="assets/icons/wechat.png" alt="" width="24" height="24">微信小程序

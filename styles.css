@@ -13,8 +13,12 @@
   /* text */
   --paper-000:#F4F4F1;
   --paper-100:#D6D8D6;
-  --paper-200:#9A9EA1;
-  --paper-300:#6A6E71;
+  --paper-200:#B8BCB8;
+  --paper-300:#A3A8A3;
+
+  /* hairlines — dim white, not dark gray: 1px structure must read on black */
+  --rule:#4E524F;
+  --rule-strong:#6A6E6A;
 
   /* signal 鈥?racing red. the one accent */
   --signal:#C8102E;
@@ -29,9 +33,9 @@
   --demo-rule-strong:rgba(26,23,16,.28);
 
   /* type 鈥?all sans */
-  --font-display:"Archivo","Noto Sans SC",sans-serif;
-  --font-sans:"Noto Sans SC",sans-serif;
-  --font-mono:"IBM Plex Mono",monospace;
+  --font-display:"Archivo","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --font-sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
 
   /* layout */
   --max:1360px;
@@ -94,7 +98,7 @@ img{max-width:100%;height:auto;}
 
 .section{
   padding-block:var(--section-y);
-  border-top:1px solid var(--ink-100);
+  border-top:1px solid var(--rule);
 }
 
 main section[id],
@@ -252,7 +256,7 @@ html.is-docked .brand-logo{
 .nav-menu-panel{
   min-width:270px;
   background:var(--ink-050);
-  border:1px solid var(--ink-200);
+  border:1px solid var(--rule-strong);
 }
 
 .menu-item{
@@ -374,7 +378,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   padding:0 26px;
   font-size:15px;
   letter-spacing:.02em;
-  border:1px solid var(--ink-200);
+  border:1px solid var(--rule-strong);
   transition:background .2s ease, color .2s ease, border-color .2s ease;
 }
 .btn-primary{
@@ -432,7 +436,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   grid-template-columns:1fr 1fr;
   gap:clamp(32px,5vw,80px);
   padding-top:36px;
-  border-top:1px solid var(--ink-100);
+  border-top:1px solid var(--rule);
 }
 
 .contrast-k{
@@ -451,7 +455,7 @@ html:not(.is-init) .brand-logo{transition:none;}
 
 .creed{
   margin-top:clamp(56px,7vw,96px);
-  border-top:1px solid var(--ink-100);
+  border-top:1px solid var(--rule);
 }
 .creed li{
   font-size:clamp(1.8rem,4.4vw,3.5rem);
@@ -460,7 +464,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   font-weight:700;
   color:var(--paper-000);
   padding-block:clamp(16px,2.2vw,28px);
-  border-bottom:1px solid var(--ink-100);
+  border-bottom:1px solid var(--rule);
 }
 
 /* ---------- 03 杞︽牸 / demo ---------- */
@@ -562,10 +566,10 @@ html:not(.is-init) .brand-logo{transition:none;}
   color:var(--demo-ink);
 }
 
-.explain-list{border-top:1px solid var(--ink-100);}
+.explain-list{border-top:1px solid var(--rule);}
 .explain-list li{
   padding-block:22px;
-  border-bottom:1px solid var(--ink-100);
+  border-bottom:1px solid var(--rule);
 }
 .explain-k{
   display:block;
@@ -589,11 +593,11 @@ html:not(.is-init) .brand-logo{transition:none;}
   align-items:baseline;
   gap:26px;
   padding:20px 24px;
-  border:1px solid var(--ink-200);
+  border:1px solid var(--rule-strong);
 }
 .timeline li + li{margin-top:46px;}
 .timeline li + li::before{
-  content:"鈫?;
+  content:"\2193";
   position:absolute;
   top:-40px;
   left:24px;
@@ -625,7 +629,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   font-size:15px;
   letter-spacing:.06em;
   color:var(--paper-100);
-  border:1px solid var(--ink-200);
+  border:1px solid var(--rule-strong);
   padding:11px 22px;
   transition:border-color .18s ease, color .18s ease;
 }
@@ -676,7 +680,7 @@ html:not(.is-init) .brand-logo{transition:none;}
 /* ---------- 07 platforms / join ---------- */
 
 .platforms{
-  border-top:1px solid var(--ink-100);
+  border-top:1px solid var(--rule);
 }
 
 .platform{
@@ -685,7 +689,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   justify-content:space-between;
   gap:24px;
   padding-block:20px;
-  border-bottom:1px solid var(--ink-100);
+  border-bottom:1px solid var(--rule);
 }
 
 .platform-name{
@@ -723,7 +727,7 @@ html:not(.is-init) .brand-logo{transition:none;}
   display:inline-grid;
   place-items:center;
   padding:12px;
-  border:1px solid var(--ink-200);
+  border:1px solid var(--rule-strong);
   background:var(--ink-050);
   flex:none;
 }
@@ -777,7 +781,7 @@ html:not(.is-init) .brand-logo{transition:none;}
 /* ---------- footer ---------- */
 
 .footer{
-  border-top:1px solid var(--ink-100);
+  border-top:1px solid var(--rule);
 }
 
 .footer-inner{
