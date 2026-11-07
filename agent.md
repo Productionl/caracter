@@ -52,6 +52,7 @@ npm.cmd run build   # 输出 ../assets/gradient.js（IIFE，React 已打包并�
 - 画布纯黑 `--ink-000 #000000`；文字为骨白 / 灰阶。
 - 强调色：赛车红 `--signal #C8102E`（亮态 `--signal-bright #E8384F`）。仅用于：在线状态点、键盘焦点、主 CTA、COMING SOON、板块图标。
 - 字体：`Noto Sans SC`（中文）、`Archivo`（拉丁）、`IBM Plex Mono`（数据，tabular）。
+- **字体只作增强，不能阻塞渲染**：Google Fonts 的 CSS 由 `index.html` 里的内联脚本在 `load` 之后异步插入，严禁改回 `<head>` 里同步的 `<link rel="stylesheet">`——`fonts.googleapis.com` 在国内经常连不上，挂住就是白屏转圈。`styles.css` 的三组 `--font-*` 都带系统后备栈。
 - **零圆角、零阴影**，以 1px hairline 组织结构；**唯一例外**：03 段淡黄 Demo 卡（`--demo-bg #F2EBD3`，圆角）。
 - 大量留白、文档式左对齐。避免 AI 常见套路：全大写 eyebrow、按钮加「→」、统一圆角卡片、柔和灰色阴影、装饰性编号。
 
@@ -73,6 +74,8 @@ npm.cmd run build   # 输出 ../assets/gradient.js（IIFE，React 已打包并�
 ## 提交 / 发布
 
 - 直接在 `main` 提交并 `git push origin main` 即触发 Pages 更新。
+- **「提交」默认包含 push**：用户说「提交」时，commit 完直接推 `origin main`，不用再问。
+- 线上地址是自定义域名 <https://caracter.cn>（`www` 也行）；`productionl.github.io/caracter/` 返回 404 属正常，不代表没发布。
 - 提交前用 `git status` 检查；**不要提交** `gradient-src/node_modules`（已被 `.gitignore` 忽略）。
 - 网络偶发 `Failed to connect to github.com:443`，重试即可。
 
